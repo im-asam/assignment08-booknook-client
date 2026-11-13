@@ -2,7 +2,7 @@
 
 A small online library — add a book, borrow a book, return a book.
 
-**Live site:** _(to be added after deployment)_
+**Live site:** https://assignment08-booknook-client.vercel.app/
 
 ## Features
 
