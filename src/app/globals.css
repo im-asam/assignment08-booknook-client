@@ -1,26 +1,49 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:where(.dark, .dark *));
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@theme {
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Deep forest green — BookNook primary */
+  --color-forest-50: #f0f7f3;
+  --color-forest-100: #dcebe2;
+  --color-forest-200: #b9d7c8;
+  --color-forest-300: #8fbda7;
+  --color-forest-400: #5d9d83;
+  --color-forest-500: #3d8168;
+  --color-forest-600: #2c6853;
+  --color-forest-700: #245444;
+  --color-forest-800: #1d4a3a;
+  --color-forest-900: #16382c;
+  --color-forest-950: #0b2019;
+
+  /* Warm parchment / cream surfaces */
+  --color-cream-50: #faf6ef;
+  --color-cream-100: #f3ecdd;
+  --color-cream-200: #e7dbc2;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-cream-50);
+  color: #1c1917;
+}
+
+.dark body {
+  background-color: #101a15;
+  color: #e7e5e4;
+}
+
+/* Swiper pagination / navigation in brand colors */
+.swiper-pagination-bullet {
+  background: #d97706;
+  opacity: 0.5;
+}
+.swiper-pagination-bullet-active {
+  opacity: 1;
+}
+.swiper-button-prev,
+.swiper-button-next {
+  color: #d97706;
 }
