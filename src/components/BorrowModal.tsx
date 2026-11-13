@@ -36,7 +36,13 @@ export default function BorrowModal({
   const handleConfirm = async () => {
     setBusy(true);
     try {
-      await borrowBook({ bookId: book._id });
+      await borrowBook({
+        bookId: book._id,
+        bookTitle: book.title,
+        bookImage: book.image,
+        userName,
+        userEmail,
+      });
       toast.success(`You borrowed "${book.title}". Enjoy the read!`);
       onSuccess();
     } catch (err) {

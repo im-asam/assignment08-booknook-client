@@ -41,6 +41,8 @@ export interface BookInput {
   image: string;
   description: string;
   totalCopies: number;
+  addedBy: string;
+  addedByEmail: string;
 }
 
 async function getToken(): Promise<string | null> {
@@ -115,6 +117,10 @@ export async function deleteBook(id: string): Promise<void> {
 
 export async function borrowBook(data: {
   bookId: string;
+  bookTitle: string;
+  bookImage: string;
+  userName: string;
+  userEmail: string;
 }): Promise<Borrow> {
   return request<Borrow>(
     "/borrows",

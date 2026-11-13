@@ -38,6 +38,10 @@ export default function AddBookForm() {
       toast.error("Please choose a cover image for the book.");
       return;
     }
+    if (!user) {
+      toast.error("You must be logged in to add a book.");
+      return;
+    }
     setBusy(true);
     try {
       const image = await uploadImageToImgbb(imageFile);
@@ -48,6 +52,8 @@ export default function AddBookForm() {
         description,
         totalCopies,
         image,
+        addedBy: user.name ?? "",
+        addedByEmail: user.email ?? "",
       });
       toast.success(`"${title}" is now on the shelf!`);
       router.push("/my-books");
