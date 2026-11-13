@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BookNook
+
+A small online library — add a book, borrow a book, return a book.
+
+**Live site:** _(to be added after deployment)_
+
+## Features
+
+- **Browse the shelf** — view all books as cards with cover, title, author and category, newest arrivals first on the home page.
+- **Borrow & return** — borrow a book for 14 days from its details page; return it from My Borrows and the copy goes back on the shelf automatically.
+- **Add & manage books** — logged-in users add books with a cover image (imgbb upload), then edit or delete their own books from My Books.
+- **Available copies** — every book tracks total vs. available copies; borrowing decreases the count, returning increases it, and the Borrow button disables at zero.
+- **No double borrowing** — a user cannot borrow the same book twice at the same time.
+- **Secure auth with JWT** — BetterAuth (email + Google) with the MongoDB adapter; protected API calls carry a JWT that the server verifies.
+- **Dark / light theme** — one-click toggle in the Navbar, saved in localStorage with no flash on load.
+- **Animated, responsive UI** — Swiper hero slider, Framer Motion reveals, and a layout that works on mobile, tablet and desktop.
+
+## Tech Stack
+
+- Next.js 16 (App Router) + React 19 + TypeScript
+- Tailwind CSS 4
+- BetterAuth + MongoDB Adapter + JWT plugin
+- Express API server (separate repo) + MongoDB Atlas
+- imgbb for book cover uploads
+- Swiper.js, Framer Motion, react-hot-toast
 
 ## Getting Started
 
-First, run the development server:
+1. Copy `.env.example` to `.env.local` and fill in the values (see the comments in `.env.example` for where to get each one).
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Start the development server (make sure the API server is running on port 5000):
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Routes
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Route          | Access  | Description                              |
+| -------------- | ------- | ---------------------------------------- |
+| `/`            | Public  | Hero slider, new arrivals, library info  |
+| `/books`       | Public  | All books                                |
+| `/books/:id`   | Private | Book details + borrow                    |
+| `/add-book`    | Private | Add a new book                           |
+| `/my-books`    | Private | Your books (edit / delete)               |
+| `/my-borrows`  | Private | Your borrowed books (return)             |
+| `/login`       | Public  | Log in (email or Google)                 |
+| `/register`    | Public  | Create an account                        |
+| `/profile`     | Private | Your profile                             |
